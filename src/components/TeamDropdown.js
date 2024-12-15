@@ -28,11 +28,11 @@ export function TeamDropdown({ onTeamSelect }) {
     <select 
       value={selectedTeam} 
       onChange={handleTeamChange} 
-      className="w-full p-2 border rounded"
+      className="w-full p-2 text-black border rounded"
     >
       <option value="">Select a Team</option>
       {teams.map(team => (
-        <option key={team.id} value={team.id}>
+        <option key={team.id} className='text-black' value={team.id}>
           {team.name}
         </option>
       ))}
