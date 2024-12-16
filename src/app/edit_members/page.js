@@ -105,8 +105,14 @@ export default function EditMembersPage() {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Edit Team Members</h1>
+      <div className="flex flex-row justify-end">
 
+      
+      <button  onClick={() => window.location.href = '/'}  class="justify-end  bg-blue-500 text-white rounded rounded-lg px-4 py-2 hover:bg-gray-300 transition duration-200">
+        Home
+    </button></div>
+      <h1 className="text-2xl font-bold mb-4">Edit Team Members</h1>  
+      
       {error && (
         <div className="bg-red-100 text-red-800 p-3 rounded mb-4">
           {error}
@@ -121,6 +127,7 @@ export default function EditMembersPage() {
 
       {/* Team Update Section - Moved to the top */}
       <div className="mb-6 flex items-center space-x-4">
+        
         <select 
           value={selectedTeam} 
           onChange={(e) => setSelectedTeam(e.target.value)}
@@ -203,6 +210,7 @@ export default function EditMembersPage() {
                     <span className="text-blue-600">✓</span>
                   )}
                 </div>
+                
               </div>
             ))}
           </div>
