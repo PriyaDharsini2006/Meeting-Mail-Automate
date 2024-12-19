@@ -1,3 +1,4 @@
+
 // src/app/api/send-invite/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '../../../lib/prisma'
@@ -56,17 +57,23 @@ export async function POST(request) {
 
     console.log('Recipient emails:', recipientEmails)
 
-    // Send email
-    await sendMeetingInvite(recipientEmails, {
+    // Send email and get the email sending results
+    const emailSendingResults = await sendMeetingInvite(recipientEmails, {
       name,
       time,
       description,
       meetingLink
     })
 
+    // Destructure the results from the email sending function
+    const { results, sentCount, failedCount } = emailSendingResults
+
     return NextResponse.json({ 
       message: 'Invite sent successfully',
-      recipients: recipientEmails.length
+      recipients: recipientEmails.length,
+      results,
+      sentCount,
+      failedCount
     })
   } catch (error) {
     // Detailed error logging
